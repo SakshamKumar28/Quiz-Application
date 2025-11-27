@@ -13,6 +13,7 @@ const createQuiz = asyncHandler(async (req, res) => {
     description,
     timeLimit,
     teacher: req.user._id,
+    isPublished: true,
   });
 
   if (questions && questions.length > 0) {

@@ -99,7 +99,7 @@ export default function CreateQuiz() {
       };
       fetchQuiz();
     }
-  }, [id, form, navigate]);
+  }, [id, form.reset, navigate]);
 
   async function onSubmit(values) {
     setIsLoading(true);

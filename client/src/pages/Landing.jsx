@@ -10,8 +10,11 @@ export default function Landing() {
   const { user } = useAuth();
 
   if (user) {
-    if (user.role === 'teacher') return <Navigate to="/teacher/dashboard" />;
-    return <Navigate to="/dashboard" />;
+    if (user.role === 'teacher') return <Navigate to="/teacher/dashboard" replace />;
+    if (user.role === 'student') return <Navigate to="/dashboard" replace />;
+    // If role is unknown or admin (and not handled), stay on landing or show error
+    // For now, let's just log it and maybe allow them to see the landing page or logout
+    console.warn("Unknown role or admin on landing page:", user.role);
   }
 
   return (
